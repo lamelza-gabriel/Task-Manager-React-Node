@@ -1,0 +1,29 @@
+.header-form {
+  border: 1px solid black;
+}
+.header-form nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(43, 78, 120);
+}
+.header-form nav .header-space {
+  width: 70%;
+}
+.header-form nav .header-container {
+  width: 30%;
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+}
+.header-form nav .header-container p {
+  color: white;
+}
+.header-form nav .header-container .header-logo {
+  width: 50px;
+  border: 1px solid transparent;
+  padding: 5px;
+  border-radius: 5px;
+}
+.header-form nav .header-container .header-logo:hover {
+  border: 1px solid white;
+}/*# sourceMappingURL=Navbar.css.map */

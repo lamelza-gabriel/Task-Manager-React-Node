@@ -1,0 +1,29 @@
+.header-form {
+	border: 1px solid black;
+	nav {
+		display: flex;
+		justify-content: space-around;
+		background-color: rgb(43, 78, 120);
+		.header-space {
+			width: 70%;
+		}
+		.header-container {
+			width: 30%;
+			display: flex;
+			width: 30%;
+			justify-content: space-around;
+			p {
+				color: white;
+			}
+			.header-logo {
+				width: 50px;
+				border: 1px solid transparent;
+				padding: 5px;
+				border-radius: 5px;
+			}
+			.header-logo:hover {
+				border: 1px solid white;
+			}
+		}
+	}
+}
