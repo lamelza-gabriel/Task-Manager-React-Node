@@ -4,6 +4,9 @@ const connectDB = require("./db/connectDB");
 //variables ambiente
 require("dotenv").config();
 
+//importante, manejar errores asincronos
+require("express-async-errors");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -34,6 +37,10 @@ app.use("/api/logreg", logRegRoutes);
 app.use("/api/tasks", taskRoutes);
 
 app.get("/api", (req, res) => res.json({ message: "Hola desde el servidor" }));
+
+//traer middleware errores
+const errorHandlerMiddleware = require("./middleware/errorHandler");
+app.use(errorHandlerMiddleware);
 
 const start = async () => {
 	try {

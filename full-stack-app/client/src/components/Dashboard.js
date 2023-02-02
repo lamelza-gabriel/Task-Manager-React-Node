@@ -57,12 +57,23 @@ const Dashboard = () => {
 					email: formLogin.emailLogin,
 				})
 				.then((response) => {
-					const tokenTemp = response.data.token;
-					localStorage.setItem("TOKEN JWT", tokenTemp);
-					const TempUser = response.data.user.name;
-					const TempId = response.data.user.id;
-					setUserState({ name: TempUser, id: TempId });
-					navigate("/tasks");
+					if (response.data.msg === "Password is not correct") {
+						window.alert(
+							"Password is not correct, try again with a diferent password"
+						);
+					} else if (
+						response.data.msg ===
+						"Invalid credentials, user or email are not correct"
+					) {
+						window.alert("Invalid credentials, user or email are not correct");
+					} else if (response.data.token) {
+						const tokenTemp = response.data.token;
+						localStorage.setItem("TOKEN JWT", tokenTemp);
+						const TempUser = response.data.user.name;
+						const TempId = response.data.user.id;
+						setUserState({ name: TempUser, id: TempId });
+						navigate("/tasks");
+					}
 				});
 		} catch (error) {
 			console.log(error);
@@ -79,15 +90,26 @@ const Dashboard = () => {
 					email: formRegister.emailRegister,
 				})
 				.then((response) => {
-					console.log(response);
-					const tokenTemp = response.data.token;
-					localStorage.setItem("TOKEN JWT", tokenTemp);
-					const TempUser = response.data.user.name;
-					const TempId = response.data.user.id;
-					setUserState({ name: TempUser, id: TempId });
-					navigate("/tasks");
-				})
-				.then(console.log("user creado"));
+					if (
+						response.data.msg ===
+						"Duplicate value for the email, please provide a new one"
+					) {
+						window.alert(
+							"Duplicate value for the email, please provide a new one"
+						);
+					} else if (
+						response.data.msg === "Invalid credentials, provide them all"
+					) {
+						window.alert("Invalid credentials, provide them all");
+					} else if (response.data.token) {
+						const tokenTemp = response.data.token;
+						localStorage.setItem("TOKEN JWT", tokenTemp);
+						const TempUser = response.data.user.name;
+						const TempId = response.data.user.id;
+						setUserState({ name: TempUser, id: TempId });
+						navigate("/tasks");
+					}
+				});
 		} catch (error) {
 			console.log(error);
 		}
